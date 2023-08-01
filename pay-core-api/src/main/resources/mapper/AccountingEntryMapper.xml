@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xudq.api.dao.AccountingEntryMapper" >
+  <resultMap id="BaseResultMap" type="com.xudq.api.po.AccountingEntry" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="account_org" property="accountOrg" jdbcType="VARCHAR" />
+    <result column="product_no" property="productNo" jdbcType="VARCHAR" />
+    <result column="trans_type" property="transType" jdbcType="VARCHAR" />
+    <result column="busi_type" property="busiType" jdbcType="VARCHAR" />
+    <result column="entry_no" property="entryNo" jdbcType="VARCHAR" />
+    <result column="account_type" property="accountType" jdbcType="VARCHAR" />
+    <result column="account_flag" property="accountFlag" jdbcType="TINYINT" />
+    <result column="dc_flag" property="dcFlag" jdbcType="TINYINT" />
+    <result column="account_caption_no" property="accountCaptionNo" jdbcType="VARCHAR" />
+    <result column="entry_status" property="entryStatus" jdbcType="VARCHAR" />
+    <result column="operator_id" property="operatorId" jdbcType="VARCHAR" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="approver_id" property="approverId" jdbcType="VARCHAR" />
+    <result column="approve_time" property="approveTime" jdbcType="TIMESTAMP" />
+    <result column="node_id" property="nodeId" jdbcType="VARCHAR" />
+    <result column="request_id" property="requestId" jdbcType="VARCHAR" />
+    <result column="default_cond_code" property="defaultCondCode" jdbcType="VARCHAR" />
+    <result column="check_idea" property="checkIdea" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="TINYINT" />
+    <result column="last_modify_time" property="lastModifyTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="reserve_int_1" property="reserveInt1" jdbcType="INTEGER" />
+    <result column="reserve_char_1" property="reserveChar1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, account_org, product_no, trans_type, busi_type, entry_no, account_type, account_flag, 
+    dc_flag, account_caption_no, entry_status, operator_id, operate_time, approver_id, 
+    approve_time, node_id, request_id, default_cond_code, check_idea, is_deleted, last_modify_time, 
+    create_time, update_time, reserve_int_1, reserve_char_1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from acm_accounting_entry
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from acm_accounting_entry
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xudq.api.po.AccountingEntry" >
+    insert into acm_accounting_entry (id, account_org, product_no,
+      trans_type, busi_type, entry_no, 
+      account_type, account_flag, dc_flag, 
+      account_caption_no, entry_status, operator_id, 
+      operate_time, approver_id, approve_time, 
+      node_id, request_id, default_cond_code, 
+      check_idea, is_deleted, last_modify_time, 
+      create_time, update_time, reserve_int_1, 
+      reserve_char_1)
+    values (#{id,jdbcType=INTEGER}, #{accountOrg,jdbcType=VARCHAR}, #{productNo,jdbcType=VARCHAR}, 
+      #{transType,jdbcType=VARCHAR}, #{busiType,jdbcType=VARCHAR}, #{entryNo,jdbcType=VARCHAR}, 
+      #{accountType,jdbcType=VARCHAR}, #{accountFlag,jdbcType=TINYINT}, #{dcFlag,jdbcType=TINYINT}, 
+      #{accountCaptionNo,jdbcType=VARCHAR}, #{entryStatus,jdbcType=VARCHAR}, #{operatorId,jdbcType=VARCHAR}, 
+      #{operateTime,jdbcType=TIMESTAMP}, #{approverId,jdbcType=VARCHAR}, #{approveTime,jdbcType=TIMESTAMP}, 
+      #{nodeId,jdbcType=VARCHAR}, #{requestId,jdbcType=VARCHAR}, #{defaultCondCode,jdbcType=VARCHAR}, 
+      #{checkIdea,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, #{lastModifyTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{reserveInt1,jdbcType=INTEGER}, 
+      #{reserveChar1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xudq.api.po.AccountingEntry" >
+    insert into acm_accounting_entry
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="accountOrg != null" >
+        account_org,
+      </if>
+      <if test="productNo != null" >
+        product_no,
+      </if>
+      <if test="transType != null" >
+        trans_type,
+      </if>
+      <if test="busiType != null" >
+        busi_type,
+      </if>
+      <if test="entryNo != null" >
+        entry_no,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="accountFlag != null" >
+        account_flag,
+      </if>
+      <if test="dcFlag != null" >
+        dc_flag,
+      </if>
+      <if test="accountCaptionNo != null" >
+        account_caption_no,
+      </if>
+      <if test="entryStatus != null" >
+        entry_status,
+      </if>
+      <if test="operatorId != null" >
+        operator_id,
+      </if>
+      <if test="operateTime != null" >
+        operate_time,
+      </if>
+      <if test="approverId != null" >
+        approver_id,
+      </if>
+      <if test="approveTime != null" >
+        approve_time,
+      </if>
+      <if test="nodeId != null" >
+        node_id,
+      </if>
+      <if test="requestId != null" >
+        request_id,
+      </if>
+      <if test="defaultCondCode != null" >
+        default_cond_code,
+      </if>
+      <if test="checkIdea != null" >
+        check_idea,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="lastModifyTime != null" >
+        last_modify_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="reserveInt1 != null" >
+        reserve_int_1,
+      </if>
+      <if test="reserveChar1 != null" >
+        reserve_char_1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="accountOrg != null" >
+        #{accountOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null" >
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiType != null" >
+        #{busiType,jdbcType=VARCHAR},
+      </if>
+      <if test="entryNo != null" >
+        #{entryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountFlag != null" >
+        #{accountFlag,jdbcType=TINYINT},
+      </if>
+      <if test="dcFlag != null" >
+        #{dcFlag,jdbcType=TINYINT},
+      </if>
+      <if test="accountCaptionNo != null" >
+        #{accountCaptionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="entryStatus != null" >
+        #{entryStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approverId != null" >
+        #{approverId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null" >
+        #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null" >
+        #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultCondCode != null" >
+        #{defaultCondCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkIdea != null" >
+        #{checkIdea,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="lastModifyTime != null" >
+        #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserveInt1 != null" >
+        #{reserveInt1,jdbcType=INTEGER},
+      </if>
+      <if test="reserveChar1 != null" >
+        #{reserveChar1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xudq.api.po.AccountingEntry" >
+    update acm_accounting_entry
+    <set >
+      <if test="accountOrg != null" >
+        account_org = #{accountOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="productNo != null" >
+        product_no = #{productNo,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null" >
+        trans_type = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="busiType != null" >
+        busi_type = #{busiType,jdbcType=VARCHAR},
+      </if>
+      <if test="entryNo != null" >
+        entry_no = #{entryNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=VARCHAR},
+      </if>
+      <if test="accountFlag != null" >
+        account_flag = #{accountFlag,jdbcType=TINYINT},
+      </if>
+      <if test="dcFlag != null" >
+        dc_flag = #{dcFlag,jdbcType=TINYINT},
+      </if>
+      <if test="accountCaptionNo != null" >
+        account_caption_no = #{accountCaptionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="entryStatus != null" >
+        entry_status = #{entryStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null" >
+        operator_id = #{operatorId,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null" >
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approverId != null" >
+        approver_id = #{approverId,jdbcType=VARCHAR},
+      </if>
+      <if test="approveTime != null" >
+        approve_time = #{approveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nodeId != null" >
+        node_id = #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="requestId != null" >
+        request_id = #{requestId,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultCondCode != null" >
+        default_cond_code = #{defaultCondCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkIdea != null" >
+        check_idea = #{checkIdea,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="lastModifyTime != null" >
+        last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserveInt1 != null" >
+        reserve_int_1 = #{reserveInt1,jdbcType=INTEGER},
+      </if>
+      <if test="reserveChar1 != null" >
+        reserve_char_1 = #{reserveChar1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xudq.api.po.AccountingEntry" >
+    update acm_accounting_entry
+    set account_org = #{accountOrg,jdbcType=VARCHAR},
+      product_no = #{productNo,jdbcType=VARCHAR},
+      trans_type = #{transType,jdbcType=VARCHAR},
+      busi_type = #{busiType,jdbcType=VARCHAR},
+      entry_no = #{entryNo,jdbcType=VARCHAR},
+      account_type = #{accountType,jdbcType=VARCHAR},
+      account_flag = #{accountFlag,jdbcType=TINYINT},
+      dc_flag = #{dcFlag,jdbcType=TINYINT},
+      account_caption_no = #{accountCaptionNo,jdbcType=VARCHAR},
+      entry_status = #{entryStatus,jdbcType=VARCHAR},
+      operator_id = #{operatorId,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      approver_id = #{approverId,jdbcType=VARCHAR},
+      approve_time = #{approveTime,jdbcType=TIMESTAMP},
+      node_id = #{nodeId,jdbcType=VARCHAR},
+      request_id = #{requestId,jdbcType=VARCHAR},
+      default_cond_code = #{defaultCondCode,jdbcType=VARCHAR},
+      check_idea = #{checkIdea,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      last_modify_time = #{lastModifyTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      reserve_int_1 = #{reserveInt1,jdbcType=INTEGER},
+      reserve_char_1 = #{reserveChar1,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <sql id="where_sql" >
+    <where >
+      <if test="po.accountOrg != null" >
+        AND account_org = #{po.accountOrg,jdbcType=VARCHAR}
+      </if>
+      <if test="po.productNo != null" >
+        AND product_no = #{po.productNo,jdbcType=VARCHAR}
+      </if>
+      <if test="po.transType != null" >
+        AND trans_type = #{po.transType,jdbcType=VARCHAR}
+      </if>
+      <if test="po.busiType != null" >
+        AND busi_type = #{po.busiType,jdbcType=VARCHAR}
+      </if>
+      <if test="po.entryNo != null" >
+        AND entry_no = #{po.entryNo,jdbcType=VARCHAR}
+      </if>
+      <if test="po.accountType != null" >
+        AND account_type = #{po.accountType,jdbcType=VARCHAR}
+      </if>
+      <if test="po.accountFlag != null" >
+        AND account_flag = #{po.accountFlag,jdbcType=TINYINT}
+      </if>
+      <if test="po.dcFlag != null" >
+        AND dc_flag = #{po.dcFlag,jdbcType=TINYINT}
+      </if>
+      <if test="po.accountCaptionNo != null" >
+        AND account_caption_no = #{po.accountCaptionNo,jdbcType=VARCHAR}
+      </if>
+      <if test="po.entryStatus != null" >
+        AND entry_status = #{po.entryStatus,jdbcType=VARCHAR}
+      </if>
+      <if test="po.operatorId != null" >
+        AND operator_id = #{po.operatorId,jdbcType=VARCHAR}
+      </if>
+      <if test="po.operateTime != null" >
+        AND operate_time = #{po.operateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="po.approverId != null" >
+        AND approver_id = #{po.approverId,jdbcType=VARCHAR}
+      </if>
+      <if test="po.approveTime != null" >
+        AND approve_time = #{po.approveTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="po.nodeId != null" >
+        AND node_id = #{po.nodeId,jdbcType=VARCHAR}
+      </if>
+      <if test="po.requestId != null" >
+        AND request_id = #{po.requestId,jdbcType=VARCHAR}
+      </if>
+      <if test="po.defaultCondCode != null" >
+        AND default_cond_code = #{po.defaultCondCode,jdbcType=VARCHAR}
+      </if>
+      <if test="po.checkIdea != null" >
+        AND check_idea = #{po.checkIdea,jdbcType=VARCHAR}
+      </if>
+      <if test="po.isDeleted != null" >
+        AND is_deleted = #{po.isDeleted,jdbcType=TINYINT}
+      </if>
+      <if test="po.lastModifyTime != null" >
+        AND last_modify_time = #{po.lastModifyTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="po.createTime != null" >
+        AND create_time = #{po.createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="po.updateTime != null" >
+        AND update_time = #{po.updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="po.reserveInt1 != null" >
+        AND reserve_int_1 = #{po.reserveInt1,jdbcType=INTEGER}
+      </if>
+      <if test="po.reserveChar1 != null" >
+        AND reserve_char_1 = #{po.reserveChar1,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </sql>
+  <select id="selectByParam" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from acm_accounting_entry
+    <if test="po!= null" >
+      <include refid="where_sql" />
+    </if>
+    <if test="start != null and end != null" >
+      LIMIT #{start},#{end}
+    </if>
+  </select>
+  <select id="selectCountByParam" parameterType="java.util.Map" resultType="java.lang.Integer" >
+    select count(1)
+    from acm_accounting_entry
+    <if test="po!= null" >
+      <include refid="where_sql" />
+    </if>
+  </select>
+  <insert id="batchInsert" parameterType="java.util.Map" >
+    insert into acm_accounting_entry (
+    account_org,product_no,trans_type,
+    busi_type,entry_no,account_type,
+    account_flag,dc_flag,account_caption_no,
+    entry_status,operator_id,operate_time,
+    approver_id,approve_time,node_id,
+    request_id,default_cond_code,check_idea,
+    is_deleted,last_modify_time,create_time,
+    update_time,reserve_int_1,reserve_char_1
+    ) values
+    <foreach collection="list" item="item" index="index" separator="," >
+      (
+      #{item.accountOrg,jdbcType=VARCHAR},#{item.productNo,jdbcType=VARCHAR},#{item.transType,jdbcType=VARCHAR},
+      #{item.busiType,jdbcType=VARCHAR},#{item.entryNo,jdbcType=VARCHAR},#{item.accountType,jdbcType=VARCHAR},
+      #{item.accountFlag,jdbcType=TINYINT},#{item.dcFlag,jdbcType=TINYINT},#{item.accountCaptionNo,jdbcType=VARCHAR},
+      #{item.entryStatus,jdbcType=VARCHAR},#{item.operatorId,jdbcType=VARCHAR},#{item.operateTime,jdbcType=TIMESTAMP},
+      #{item.approverId,jdbcType=VARCHAR},#{item.approveTime,jdbcType=TIMESTAMP},#{item.nodeId,jdbcType=VARCHAR},
+      #{item.requestId,jdbcType=VARCHAR},#{item.defaultCondCode,jdbcType=VARCHAR},#{item.checkIdea,jdbcType=VARCHAR},
+      #{item.isDeleted,jdbcType=TINYINT},#{item.lastModifyTime,jdbcType=TIMESTAMP},#{item.createTime,jdbcType=TIMESTAMP},
+      #{item.updateTime,jdbcType=TIMESTAMP},#{item.reserveInt1,jdbcType=INTEGER},#{item.reserveChar1,jdbcType=VARCHAR}
+      )
+    </foreach>
+  </insert>
+</mapper>
