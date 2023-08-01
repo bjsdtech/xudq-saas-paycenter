@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.7</version>
+    </parent>
+
+    <packaging>pom</packaging>
+    <groupId>com.xudq</groupId>
+    <artifactId>pay-core</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <archetype_base.version>0.0.2-SNAPSHOT</archetype_base.version>
+
+        <cas-client-autoconfig-support.version>1.1.1-RELEASE</cas-client-autoconfig-support.version>
+        <auth-client.version>1.2.0</auth-client.version>
+        <jackson-dataformat-yaml.version>2.8.3</jackson-dataformat-yaml.version>
+        <junit.version>4.12</junit.version>
+        <log4j-core.version>2.13.3</log4j-core.version>
+        <druid.version>1.2.3</druid.version>
+        <apache-commons-pool2.version>2.11.1</apache-commons-pool2.version>
+        <mysql-connector-java.version>8.0.15</mysql-connector-java.version>
+        <mybatis-spring-boot-starter.version>1.1.1</mybatis-spring-boot-starter.version>
+        <jersey-client.version>2.23.1</jersey-client.version>
+        <jjwt.version>0.6.0</jjwt.version>
+        <grpc.version>1.0.1</grpc.version>
+        <aliyun-sdk-oss.version>2.6.1</aliyun-sdk-oss.version>
+        <jedis.version>2.8.1</jedis.version>
+
+        <httpclient.version>4.5.2</httpclient.version>
+        <fastjson.version>1.2.28</fastjson.version>
+        <google-guava.version>19.0</google-guava.version>
+        <apache-commons-lang3.version>3.4</apache-commons-lang3.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <hibernate-validator.version>6.2.5.Final</hibernate-validator.version>
+
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- default bytecode version for src/main -->
+        <main.java.version>1.8</main.java.version>
+        <main.signature.artifact>java18</main.signature.artifact>
+
+        <!-- default bytecode version for src/test -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <maven-plugin.version>0.3.3</maven-plugin.version>
+        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <license-maven-plugin.version>2.11</license-maven-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
+        <maven-archetype-plugin.version>3.0.1</maven-archetype-plugin.version>
+        <xudq.mybatis.plugin.version>1.1-SNAPSHOT</xudq.mybatis.plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--唯一单号依赖包-->
+            <!--
+            <dependency>
+                <groupId>com.xudq</groupId>
+                <artifactId>pay-common</artifactId>
+                <version>1.1.0</version>
+            </dependency>
+            -->
+
+            <!--支持统一登录的包 依赖auth-client-->
+            <!--
+            <dependency>
+                <groupId>com.xudq.cas</groupId>
+                <artifactId>cas-client-autoconfig-support</artifactId>
+                <version>${cas-client-autoconfig-support.version}</version>
+            </dependency>
+            -->
+
+            <!--调用auth封的包-->
+            <!--
+            <dependency>
+                <groupId>com.xudq</groupId>
+                <artifactId>auth-client</artifactId>
+                <version>${auth-client.version}</version>
+            </dependency>
+            -->
+            <!--quickly build some of the common patterns in distributed systems  -->
+<!--
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Camden.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+-->
+            <!--Tomcat Jdbc Pool 数据库连接池-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${apache-commons-pool2.version}</version>
+            </dependency>
+
+            <!--mysql java驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+
+            <!--mybatis开发团队为Spring Boot 提供-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--JDBC连接池、监控组件-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>2.3.6.RELEASE</version>
+            </dependency>
+
+            <!--redis 客户端-->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <!--回归测试框架-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+            <!-- parse yaml, 加上这个才能辨认到log4j2.yml文件 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${jackson-dataformat-yaml.version}</version>
+            </dependency>
+
+            <!-- log4j2 2个核心包之一 -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.13.3</version>
+            </dependency>
+
+            <!--
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+-->
+
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+
+            <!--是JAX-RS(JSR311)开源参考实现用于构建RESTful Web service-->
+<!--
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-client</artifactId>
+                <version>${jersey-client.version}</version>
+            </dependency>
+-->
+            <!--JSON Web Token（JWT）是一个非常轻巧的规范。这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- 添加grpc相关依赖包 -->
+            <!--
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-netty</artifactId>
+                <version>1.34.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-protobuf</artifactId>
+                <version>1.34.1</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-stub</artifactId>
+                <version>1.34.1</version>
+            </dependency>
+            -->
+            <!--aliyun oss-->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-sdk-oss.version}</version>
+
+                <exclusions>
+                    <!-- exclude掉spring-boot的默认log配置 -->
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                </exclusions>
+
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!-- log related -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <!-- exclude掉spring-boot的默认log配置 -->
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- 引入log4j2依赖 -->
+<!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+            <version>2.6.6</version>
+        </dependency>
+-->
+        <!-- log4j2 2个核心包之一。pring-boot-starter-log4j2 已经引入 依赖 log4j-core
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+  -->
+
+        <!-- parse yaml, 加上这个才能辨认到log4j2.yml文件 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
+            <version>${jackson-dataformat-yaml.version}</version>
+        </dependency>
+
+        <!--web功能依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--jdbc依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!--提供的对应用系统的自省和监控的集成功能，可以对应用系统进行配置查看、相关功能统计-->
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+-->
+        <!--Consul实现服务的注册和发现-->
+        <!--
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+            <version>1.1.2.RELEASE</version>
+        </dependency>
+        -->
+        <!--springboot aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!--springboot test-->
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        -->
+        <!--spring boot 配置处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--Spring Data Redis提供了四种Redis服务的Java客户端包的集成，分别是 Jedis ,JRedis , SRP and Lettuce-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+
+        <!--支持 HTTP 协议的客户端编程工具包-->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+
+        <!--支持servlet的jar包-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--JSON处理器-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+
+        <!--包含大量和JavaBean操作有关的工具方法-->
+        <!--
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        -->
+        <!--是一个 Google 的基于java1.6的类库集合的扩展项目-->
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google-guava.version}</version>
+        </dependency>
+
+        <!--主要是一些公共的工具集合，比如对字符、数组的操作等等-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+
+        <!--JSON Web Token（JWT）是一个非常轻巧的规范。
+        这个规范允许我们使用JWT在用户和服务器之间传递安全可靠的信息。-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jackson-databind</artifactId>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--打包插件-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <!--插件用来在maven构建生命周期的test phase执行一个应用的单元测试-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+<!--
+    <repositories>
+        <repository>
+            <id>release</id>
+            <name>Private Nexus Repository</name>
+            <url>http://repo.xudq.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>release</id>
+            <name>Private Nexus Repository</name>
+            <url>http://repo.xudq.com/nexus/content/groups/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+-->
+    <modules>
+        <module>pay-core-api</module>
+        <module>pay-core-base</module>
+    </modules>
+</project>
