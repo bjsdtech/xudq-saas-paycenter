@@ -12,7 +12,7 @@
 ## 系统模块结构
 
 ``` lua
-paycenter
+paycore
 ├── pay-core-api -- 支付结算服务接口
 ├── pay-core-base -- 支付结算服务基础支持
 ```
