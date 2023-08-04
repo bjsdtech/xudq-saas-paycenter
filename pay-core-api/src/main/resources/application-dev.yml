@@ -1,7 +1,7 @@
 server:
   port: 8091
   servlet:
-    context-path: /paycenter
+    context-path: /pay-center/v1
 
 
 spring:
@@ -14,7 +14,7 @@ spring:
       host: localhost
       password: 123321
       port: 6379
-#      namespace: pay-core
+#      namespace: pay-center
 #      db: 7
 
 #     expiration-time: 14400
@@ -29,15 +29,15 @@ octo:
   base64Secret: Yzk5YzUyOTFjZWI5NDQ3NmExNjU0Y2M3ZGEwNWMzNDM=
   url:
     acm:
-      createAccount: /pay-acm/acm/account/per/createAccount
-      queryByComUserId: /pay-acm/acm/account/queryByComUserId
-      queryCreateByComUserId: /pay-acm/acm/search/queryRegisterPerBalanceByComUserId
-      freezeBalance: /pay-acm/acm/core/freezeBalance
-      unfrozenBalance: /pay-acm/acm/core/defreezeBalance
-      keepAccounts: /pay-acm/acm/core/keepAccount
-      queryPayDetail: /pay-acm/acm/search/queryPayDetail
-      queryFrozenDetail: /pay-acm/acm/search/queryFrozenDetail
-      queryComUserIdByPhoneNumb: /pay-acm/acm/search/queryComUserIdByPhoneNumber
+      createAccount: /pay-acm/v1/acm/account/per/createAccount
+      queryByComUserId: /pay-acm/v1/acm/account/queryByComUserId
+      queryCreateByComUserId: /pay-acm/v1/acm/search/queryRegisterPerBalanceByComUserId
+      freezeBalance: /pay-acm/v1/acm/core/freezeBalance
+      unfrozenBalance: /pay-acm/v1/acm/core/defreezeBalance
+      keepAccounts: /pay-acm/v1/acm/core/keepAccount
+      queryPayDetail: /pay-acm/v1/acm/search/queryPayDetail
+      queryFrozenDetail: /pay-acm/v1/acm/search/queryFrozenDetail
+      queryComUserIdByPhoneNumb: /pay-acm/v1/acm/search/queryComUserIdByPhoneNumber
     jiesuan-web:
       queryChannleAccountIdByMerId: /jiesuan-web-dev/api/accountIdByMerId
 
